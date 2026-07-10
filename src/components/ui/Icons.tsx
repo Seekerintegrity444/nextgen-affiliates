@@ -8,7 +8,6 @@ import {
   ChevronRight,
   Clipboard,
   Copy,
-  DashboardIcon,
   Download,
   Edit,
   ExternalLink,
@@ -36,7 +35,6 @@ import {
   X,
   Zap,
   MapPin,
-  BarChart,
   PieChart,
   Globe2,
   Target,
@@ -64,7 +62,6 @@ import {
 
 export const Icons = {
   activity: Activity,
-  barChart: BarChart3,
   bell: Bell,
   bot: Bot,
   checkCircle: CheckCircle,
@@ -99,7 +96,7 @@ export const Icons = {
   x: X,
   zap: Zap,
   mapPin: MapPin,
-  barChart: BarChart,
+  barChart: BarChart3,
   pieChart: PieChart,
   globe2: Globe2,
   target: Target,

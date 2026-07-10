@@ -180,8 +180,8 @@ export async function GET(request: Request) {
     return NextResponse.json({
       clicks,
       total,
-      page: params.page,
-      totalPages: Math.ceil(total / params.limit),
+      page,
+      totalPages: Math.ceil(total / limit),
       filters: {
         countries: filterOptions[0].map(c => c.country).filter(Boolean),
         browsers: filterOptions[1].map(c => c.browser).filter(Boolean),
