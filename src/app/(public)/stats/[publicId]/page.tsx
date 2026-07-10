@@ -119,7 +119,7 @@ export default function PublicStatsPage({ params }: { params: { publicId: string
   }
 
   const countries = stats?.clicks
-    ? [...new Set(stats.clicks.map((c) => c.country).filter(Boolean))]
+    ? Array.from(new Set(stats.clicks.map((c) => c.country).filter(Boolean)))
     : []
 
   const totalClicks = stats?.pagination?.total || stats?.clicks?.length || 0
