@@ -7,15 +7,18 @@ async function main() {
   console.log('🌱 Seeding database...')
 
   try {
-    const adminPassword = await bcrypt.hash('admin123', 10)
+    const adminUsername = process.env.ADMIN_USERNAME || process.env.USERNAME || 'admin'
+    const adminPassword = process.env.ADMIN_PASSWORD || process.env.PASSWORD || 'admin123'
+    const adminEmail = process.env.ADMIN_EMAIL || process.env.EMAIL || 'admin@nextgen.com'
+    const hashedAdminPassword = await bcrypt.hash(adminPassword, 10)
     
     const admin = await prisma.user.upsert({
-      where: { username: 'admin' },
+      where: { username: adminUsername },
       update: {},
       create: {
-        username: 'admin',
-        email: 'admin@nextgen.com',
-        password: adminPassword,
+        username: adminUsername,
+        email: adminEmail,
+        password: hashedAdminPassword,
         role: 'ADMIN',
       },
     })
