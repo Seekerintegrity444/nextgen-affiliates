@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/db/prisma'
-import { BotDetectionService } from '@/lib/services/bot-detection'
+import { BotDetectionService } from '@/lib/auth/services/bot-detection'
 
 export async function GET(
   request: Request,
