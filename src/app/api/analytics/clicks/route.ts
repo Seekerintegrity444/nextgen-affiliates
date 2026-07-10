@@ -33,6 +33,8 @@ export async function GET(request: Request) {
 
     // Get query parameters
     const url = new URL(request.url)
+    const parsedPage = Number.parseInt(url.searchParams.get('page') || '1', 10)
+    const parsedLimit = Number.parseInt(url.searchParams.get('limit') || '20', 10)
     const params: FilterParams = {
       country: url.searchParams.get('country') || undefined,
       browser: url.searchParams.get('browser') || undefined,
@@ -42,8 +44,8 @@ export async function GET(request: Request) {
       startDate: url.searchParams.get('startDate') || undefined,
       endDate: url.searchParams.get('endDate') || undefined,
       search: url.searchParams.get('search') || undefined,
-      page: parseInt(url.searchParams.get('page') || '1'),
-      limit: parseInt(url.searchParams.get('limit') || '20'),
+      page: Number.isNaN(parsedPage) ? 1 : parsedPage,
+      limit: Number.isNaN(parsedLimit) ? 20 : parsedLimit,
       sortBy: url.searchParams.get('sortBy') || 'createdAt',
       sortOrder: (url.searchParams.get('sortOrder') as 'asc' | 'desc') || 'desc',
     }
