@@ -116,6 +116,9 @@ export async function GET(request: Request) {
       ]
     }
 
+    const page = params.page ?? 1
+    const limit = params.limit ?? 20
+
     // Get total count
     const total = await prisma.click.count({ where })
 
@@ -125,8 +128,8 @@ export async function GET(request: Request) {
       orderBy: {
         [params.sortBy || 'createdAt']: params.sortOrder,
       },
-      skip: (params.page - 1) * params.limit,
-      take: params.limit,
+      skip: (page - 1) * limit,
+      take: limit,
       select: {
         id: true,
         ipAddress: true,
